@@ -1,0 +1,31 @@
+package check;
+
+import org.testng.annotations.DataProvider;
+
+import java.lang.reflect.Method;
+
+public class DataProviderExample {
+
+    @DataProvider(name = "dataForAll")
+    private Object[][] dataMethod(Method method){
+        return switch (method.getName()) {
+            case "testAdditionOfTwoNumbers" -> new Object[][]{
+                    {2, 3, 5},
+                    {5, 7, 12}};
+            case "testSubtractionOfTwoNumbers" -> new Object[][]{
+                    {2, 3, -1},
+                    {5, 7, -2}};
+            case "testMultiplicationOfTwoNumbers" -> new Object[][]{
+                    {2, 3, 6},
+                    {5, 7, 35}};
+            case "testPercentageOfTwoNumbers" -> new Object[][]{
+                    {2, 3, 66},
+                    {5, 7, 71}};
+            case "testSquareOfNumber" -> new Object[][]{
+                    {2, 4},
+                    {5, 25}};
+            default -> null;
+        };
+    }
+
+}
